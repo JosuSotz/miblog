@@ -1,74 +1,18 @@
-<!DOCTYPE html>
-<html lang="es-MX">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-
-        label {
-        box-sizing: border-box;
-        display: inline-block;
-        position: fixed;
-        top: 2%;
-        left: 2%;
-        border-radius: 5px;
-        width: 30px;
-        height: 30px;
-        line-height: 30px;
-        font-weight: bold;
-        text-align: center;
-        user-select: none;
-        }
-
-        ul{
-        position: fixed; /* Cambiado a 'fixed' para que siga la ventana */
-        top: 30px; /* Ajustado para que esté justo debajo del botón */
-        left: 2%; /* Ajustado para que esté alineado con el botón */
-        margin-top:0;
-        padding: 0;
-        width: 200px;
-
-        }
-    </style>
-</head>
-
-<!-- Ejercicio 1-->
-<body>
-    <div class="container">
-        <div class="columna izquierda">
-            <h1> <span class="verde">Hola!</span></h1>
+<html>
+    <head>
+        <title>Django Girls blog</title>
+    </head>
+    <body>
+        <div>
+            <h1><a href="/">Django Girls Blog</a></h1>
         </div>
-    
-        <div class="columna derecha">
-            <h1> Soy <span class="verde">Josué Soto</span></h1>
-            <h2>Cientifico <span class="verde">de datos</span> y fotógrafo</h2>
-            <p>
-                Soy un apasionado de la fotografía y la videografía, 
-                dedicado a capturar los momentos más significativos de nuestra
-                vida cotidiana y congelarlos en el tiempo. Aunque mi formación 
-                académica se centra en la Ciencia de Datos, especializada en 
-                ciencias de la tierra, ha sido esta base la que me ha permitido 
-                interpretar los paisajes de una manera única y apreciar cada detalle.
-            </p>
-            <br>
-            <h2><span class="verde">Objetivo</span></h2>
-	        <p>
-                Como científico de datos y diseñador web, mi objetivo principal 
-                es fusionar la potencia analítica de la ciencia de datos con la 
-                creatividad del diseño web para crear soluciones innovadoras y 
-                visualmente impactantes. Busco no solo comprender los datos desde 
-                una perspectiva técnica, sino también traducir esos insights de 
-                manera efectiva a través de experiencias digitales atractivas. 
-                <br>
-                <br>
-                Saludos!
-            </p>
-            <a href="CVJosueSoto.pdf" download="CV Josue Soto.txt">
-                <button>Descargar CV</button>
-            </a>
-        </div>
-    </div>
-</body>
+
+        {% for post in posts %}
+            <div>
+                <p> publicado: {{ post.published_date }}</p>
+                <h2><a href="">{{ post.title }}</a></h2>
+                <p>{{ post.text|linebreaksbr }}</p>
+            </div>
+        {% endfor %}
+    </body>
 </html>
